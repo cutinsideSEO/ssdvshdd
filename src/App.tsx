@@ -247,23 +247,130 @@ export default function HDDvsSSDPage() {
         </div>
       </section>
 
-      {/* What is HDD / SSD */}
-      <section id="defs" className="relative isolate">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-start">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-semibold">What is an HDD (Hard Disk Drive)?</h2>
-            <p className="text-slate-800 leading-relaxed">A hard disk drive is the proven workhorse of storage—spinning platters store your data while a moving head reads and writes. Perfected over decades for reliability and capacity, HDDs are the backbone for data centers, creative studios, and home libraries.</p>
-          </div>
-          <ImageFrame src={imgs.gold} alt="WD Gold HDD product image" caption="The workhorse for massive, affordable capacity"/>
+{/* What is HDD / SSD — enriched copy, clearer structure, more visuals */}
+<section id="defs" className="relative isolate">
+  {/* HDD */}
+  <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-start">
+    <div className="space-y-5">
+      <h2 className="text-3xl font-semibold">What is an HDD (Hard Disk Drive)?</h2>
+      <p className="text-slate-800 leading-relaxed">
+        A hard disk drive stores data magnetically on spinning platters. An actuator arm moves a tiny head across the surface to read and write bits. 
+        HDDs have been refined for decades, earning a reputation as the <span className="font-semibold">proven workhorse</span> for massive, affordable capacity.
+      </p>
+
+      <div className="grid sm:grid-cols-2 gap-5">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="text-sm font-semibold text-slate-900">How it works</div>
+          <ul className="mt-3 grid gap-2 text-slate-800">
+            <Bullet>Platters spin at a fixed RPM (e.g., 5400/7200).</Bullet>
+            <Bullet>Heads seek to track and sector to read/write data.</Bullet>
+            <Bullet>Firmware manages caching, error correction & power-down.</Bullet>
+          </ul>
         </div>
-        <div className="max-w-6xl mx-auto px-6 pb-16 grid lg:grid-cols-2 gap-12 items-start">
-          <ImageFrame src={imgs.black} alt="WD_BLACK HDD product image" caption="Solid‑state speed for OS and apps"/>
-          <div className="space-y-4">
-            <h2 className="text-3xl font-semibold">What is an SSD (Solid State Drive)?</h2>
-            <p className="text-slate-800 leading-relaxed">A solid state drive stores data in flash memory with no moving parts. Benefits include rapid access times, silent operation, and low latency—excellent for operating systems, apps, and active projects. HDDs still lead for large‑scale, cost‑efficient storage.</p>
-          </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="text-sm font-semibold text-slate-900">Where HDDs shine</div>
+          <ul className="mt-3 grid gap-2 text-slate-800">
+            <Bullet>Highest <span className="font-medium">$ per GB</span> value at multi-TB.</Bullet>
+            <Bullet>Excellent for large media libraries & backups.</Bullet>
+            <Bullet>Mature ecosystem for diagnostics & data recovery.</Bullet>
+          </ul>
         </div>
-      </section>
+      </div>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="text-sm font-semibold text-slate-900">Ideal uses</div>
+        <div className="mt-3 grid md:grid-cols-2 gap-3 text-slate-800">
+          <ul className="grid gap-2">
+            <Bullet>Bulk photo & video archives</Bullet>
+            <Bullet>Game libraries you don’t launch daily</Bullet>
+            <Bullet>NAS, home servers, surveillance footage</Bullet>
+          </ul>
+          <ul className="grid gap-2">
+            <Bullet>Time-machine / image-based backups</Bullet>
+            <Bullet>Cold storage & long-term retention</Bullet>
+            <Bullet>Media streaming and sequential reads</Bullet>
+          </ul>
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="text-sm font-semibold text-slate-900">Things to keep in mind</div>
+        <ul className="mt-3 grid gap-2 text-slate-800">
+          <Bullet>Slower random access vs SSD; best for sequential workloads.</Bullet>
+          <Bullet>Mechanical device: avoid shocks while powered.</Bullet>
+          <Bullet>Use SMART monitoring; plan regular backups (3-2-1 rule).</Bullet>
+        </ul>
+      </div>
+    </div>
+
+    <ImageFrame
+      src={imgs.gold}
+      alt="WD Gold HDD product image"
+      caption="HDD: the workhorse for massive, affordable capacity"
+    />
+  </div>
+
+  {/* SSD */}
+  <div className="max-w-6xl mx-auto px-6 pb-16 grid lg:grid-cols-2 gap-12 items-start">
+    <ImageFrame
+      src={"https://www.westerndigital.com/content/dam/store/en-us/assets/solutions/ssd-vs-hdd/ssd-vs-hdd-g-speed-shuttle.png.wdthumb.1280.1280.webp"}
+      alt="High-performance solid state storage enclosure"
+      caption="SSD: silent, low-latency flash storage optimized for speed"
+    />
+    <div className="space-y-5">
+      <h2 className="text-3xl font-semibold">What is an SSD (Solid State Drive)?</h2>
+      <p className="text-slate-800 leading-relaxed">
+        A solid state drive stores data in flash memory chips and has <span className="font-semibold">no moving parts</span>. 
+        That design delivers very low latency and fast throughput—great for the operating system, applications, and active projects where responsiveness matters.
+      </p>
+
+      <div className="grid sm:grid-cols-2 gap-5">
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="text-sm font-semibold text-slate-900">How it works</div>
+          <ul className="mt-3 grid gap-2 text-slate-800">
+            <Bullet>Controller orchestrates reads/writes across NAND flash.</Bullet>
+            <Bullet>Wear-leveling extends life; DRAM/host caching improves speed.</Bullet>
+            <Bullet>Interfaces include SATA and NVMe (PCIe) for higher bandwidth.</Bullet>
+          </ul>
+        </div>
+        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="text-sm font-semibold text-slate-900">Where SSDs shine</div>
+          <ul className="mt-3 grid gap-2 text-slate-800">
+            <Bullet>Instant boots, app launches, and project loads.</Bullet>
+            <Bullet>Silent operation; low power and heat.</Bullet>
+            <Bullet>Excellent random I/O & multitasking responsiveness.</Bullet>
+          </ul>
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="text-sm font-semibold text-slate-900">Ideal uses</div>
+        <div className="mt-3 grid md:grid-cols-2 gap-3 text-slate-800">
+          <ul className="grid gap-2">
+            <Bullet>Operating system & key applications</Bullet>
+            <Bullet>Active photo/video editing scratch</Bullet>
+            <Bullet>Frequent-play titles & competitive gaming</Bullet>
+          </ul>
+          <ul className="grid gap-2">
+            <Bullet>Virtual machines & development toolchains</Bullet>
+            <Bullet>Catalogs, previews, and project assets</Bullet>
+            <Bullet>Database indexes / metadata-heavy tasks</Bullet>
+          </ul>
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="text-sm font-semibold text-slate-900">Things to keep in mind</div>
+        <ul className="mt-3 grid gap-2 text-slate-800">
+          <Bullet>Higher cost per GB—large capacities are pricier than HDD.</Bullet>
+          <Bullet>Finite write endurance (TBW); monitor health where supported.</Bullet>
+          <Bullet>Controller failure can be abrupt—backups remain essential.</Bullet>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Comparison intro + table */}
       <section id="comparison" className="relative isolate bg-slate-50">
