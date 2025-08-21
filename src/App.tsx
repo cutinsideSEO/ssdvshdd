@@ -381,6 +381,35 @@ export default function HDDvsSSDPage() {
         </div>
       </section>
 
+            {/* Pros & Cons */}
+      <section id="pros-cons" className="relative isolate">
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <h2 className="text-3xl font-semibold">SSD vs HDD Pros and Cons</h2>
+          <div className="mt-6 grid md:grid-cols-2 gap-8">
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+              <h3 className="text-xl font-semibold">SSD</h3>
+              <ul className="mt-4 space-y-2 text-slate-800">
+                <Bullet>Speedy boots and loads</Bullet>
+                <Bullet>Silent, low power, no moving parts</Bullet>
+                <Bullet>Great for OS/apps and active projects</Bullet>
+              </ul>
+              <div className="mt-4 h-px bg-slate-200"/>
+              <div className="mt-4 text-slate-700"><span className="font-medium">Trade‑offs:</span> higher cost/GB, finite write cycles (TBW), controller failures can be abrupt.</div>
+            </div>
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+              <h3 className="text-xl font-semibold">HDD</h3>
+              <ul className="mt-4 space-y-2 text-slate-800">
+                <Bullet>Massive capacities (10–20+ TB)</Bullet>
+                <Bullet>Best $/GB for libraries and backups</Bullet>
+                <Bullet>Mature data recovery ecosystem</Bullet>
+              </ul>
+              <div className="mt-4 h-px bg-slate-200"/>
+              <div className="mt-4 text-slate-700"><span className="font-medium">Trade‑offs:</span> slower seeks/latency, mechanical wear, audible noise, higher power draw.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
      {/* Laptop — richer, guide-style */}
 <section id="laptop" className="relative isolate bg-slate-50">
   <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-center">
@@ -430,34 +459,7 @@ export default function HDDvsSSDPage() {
 </section>
 
 
-      {/* Pros & Cons */}
-      <section id="pros-cons" className="relative isolate">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-semibold">SSD vs HDD Pros and Cons</h2>
-          <div className="mt-6 grid md:grid-cols-2 gap-8">
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <h3 className="text-xl font-semibold">SSD</h3>
-              <ul className="mt-4 space-y-2 text-slate-800">
-                <Bullet>Speedy boots and loads</Bullet>
-                <Bullet>Silent, low power, no moving parts</Bullet>
-                <Bullet>Great for OS/apps and active projects</Bullet>
-              </ul>
-              <div className="mt-4 h-px bg-slate-200"/>
-              <div className="mt-4 text-slate-700"><span className="font-medium">Trade‑offs:</span> higher cost/GB, finite write cycles (TBW), controller failures can be abrupt.</div>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-              <h3 className="text-xl font-semibold">HDD</h3>
-              <ul className="mt-4 space-y-2 text-slate-800">
-                <Bullet>Massive capacities (10–20+ TB)</Bullet>
-                <Bullet>Best $/GB for libraries and backups</Bullet>
-                <Bullet>Mature data recovery ecosystem</Bullet>
-              </ul>
-              <div className="mt-4 h-px bg-slate-200"/>
-              <div className="mt-4 text-slate-700"><span className="font-medium">Trade‑offs:</span> slower seeks/latency, mechanical wear, audible noise, higher power draw.</div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Use cases — each its own section (images + CTAs) */}
       <section id="use-cases" className="relative isolate bg-slate-50">
@@ -468,7 +470,7 @@ export default function HDDvsSSDPage() {
           <section id="use-gaming" className="pt-2">
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <div>
-                <h3 className="text-2xl font-semibold">For Gamers</h3>
+                <h3 className="text-2xl font-semibold">HDD vs. SSD For Gameing</h3>
                 <p className="mt-2 text-slate-800">Balance speed with space so you can play more and shuffle less.</p>
                 <ul className="mt-3 grid gap-2 text-slate-800">
                   <Bullet><span className="font-semibold">SSD:</span>&nbsp;Install your OS and the 3–5 titles you play most for instant level loads.</Bullet>
@@ -488,7 +490,7 @@ export default function HDDvsSSDPage() {
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <ImageFrame src={imgs.gold} alt="Creator workspace with scratch SSD and archive HDD" caption="Fast scratch on SSD, affordable archives on HDD"/>
               <div>
-                <h3 className="text-2xl font-semibold">For Content Creators</h3>
+                <h3 className="text-2xl font-semibold">HDD vs. SSD For Content Creators</h3>
                 <p className="mt-2 text-slate-800">Keep active timelines fast while controlling storage costs on large media.</p>
                 <ul className="mt-3 grid gap-2 text-slate-800">
                   <Bullet><span className="font-semibold">SSD:</span>&nbsp;Use as a scratch/work drive for current edits and exports.</Bullet>
@@ -506,7 +508,7 @@ export default function HDDvsSSDPage() {
           <section id="use-families">
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <div>
-                <h3 className="text-2xl font-semibold">For Families & Everyday Use</h3>
+                <h3 className="text-2xl font-semibold">HDD vs. SSD For Backup & Everyday Use</h3>
                 <p className="mt-2 text-slate-800">Make space for years of photos, school projects, and home videos—without slowing your PC.</p>
                 <ul className="mt-3 grid gap-2 text-slate-800">
                   <Bullet><span className="font-semibold">SSD:</span>&nbsp;Speed up an older laptop for day‑to‑day responsiveness.</Bullet>
@@ -526,7 +528,7 @@ export default function HDDvsSSDPage() {
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <ImageFrame src={imgs.red} alt="NAS with multiple HDD bays" caption="HDDs for bulk storage; SSDs can accelerate cache or VMs"/>
               <div>
-                <h3 className="text-2xl font-semibold">For NAS & Home Servers</h3>
+                <h3 className="text-2xl font-semibold">HDD vs. SSD For NAS & Home Servers </h3>
                 <p className="mt-2 text-slate-800">Build a personal cloud that balances capacity and responsiveness.</p>
                 <ul className="mt-3 grid gap-2 text-slate-800">
                   <Bullet><span className="font-semibold">HDD:</span>&nbsp;Purpose‑built for multi‑drive, 24/7 environments; best for bulk media and backups.</Bullet>
