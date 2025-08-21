@@ -161,46 +161,130 @@ function TinyCapacityCalculator() {
 }
 
 
+Here’s a drop-in, TypeScript-safe replacement for your `WhichDriveQuiz` component (self-contained and fixes the `current`/`StepCard` typing issues):
+
 function WhichDriveQuiz() {
-  // ---- State & helpers ----
+  // ---- Types ----
   type Answers = { budget?: string; primaryUse?: string; capacity?: string; portability?: string };
+  type Step = { key: keyof Answers; label: string; options: [string, string][]; help?: string };
+  type Rationale = { ssd: string[]; hdd: string[] };
+
+  // ---- State ----
   const [answers, setAnswers] = useState<Answers>({});
   const [step, setStep] = useState(0);
 
-  const steps: Array<{ key: keyof Answers; label: string; options: [string, string][], help?: string }> = [
-    { key: 'budget', label: 'What’s your budget?', help: 'Tighter budgets favor capacity; flexible budgets can buy speed.', options: [['tight','Tight'],['moderate','Moderate'],['flexible','Flexible']] },
-    { key: 'primaryUse', label: 'Your primary use?', help: 'OS & apps like fast random access; archives love roomy capacity.', options: [['os','OS & apps'],['gaming','Gaming'],['editing','Photo/Video editing'],['archive','Archiving/Backups']] },
-    { key: 'capacity', label: 'How much total space do you expect to need?', help: 'Rough order-of-magnitude is enough.', options: [['sub1TB','Up to 1TB'],['oneToFour','1–4TB'],['multiTB','8TB and up']] },
-    { key: 'portability', label: 'Where will the drive live?', help: 'Mobile benefits from shock resistance; stationary can prioritize value.', options: [['mobile','Laptop / on-the-go'],['stationary','Desktop / NAS (stationary)']] },
+  // ---- Steps (fixed type) ----
+  const steps: Step[] = [
+    {
+      key: 'budget',
+      label: 'What’s your budget?',
+      help: 'Tighter budgets favor capacity; flexible budgets can buy speed.',
+      options: [
+        ['tight', 'Tight'],
+        ['moderate', 'Moderate'],
+        ['flexible', 'Flexible'],
+      ],
+    },
+    {
+      key: 'primaryUse',
+      label: 'Your primary use?',
+      help: 'OS & apps like fast random access; archives love roomy capacity.',
+      options: [
+        ['os', 'OS & apps'],
+        ['gaming', 'Gaming'],
+        ['editing', 'Photo/Video editing'],
+        ['archive', 'Archiving/Backups'],
+      ],
+    },
+    {
+      key: 'capacity',
+      label: 'How much total space do you expect to need?',
+      help: 'Rough order-of-magnitude is enough.',
+      options: [
+        ['sub1TB', 'Up to 1TB'],
+        ['oneToFour', '1–4TB'],
+        ['multiTB', '8TB and up'],
+      ],
+    },
+    {
+      key: 'portability',
+      label: 'Where will the drive live?',
+      help: 'Mobile benefits from shock resistance; stationary can prioritize value.',
+      options: [
+        ['mobile', 'Laptop / on-the-go'],
+        ['stationary', 'Desktop / NAS (stationary)'],
+      ],
+    },
   ];
 
+  // ---- Helpers ----
   const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n));
-  const current = steps[clamp(step, 0, steps.length - 1)]; // <-- always defined
+  if (steps.length === 0) return null; // future-proofing against refactors
 
+  const idx = clamp(step, 0, steps.length - 1);
+  const current: Step = steps[idx]!; // non-null after clamp + non-empty steps
   const set = (k: keyof Answers, v: string) => setAnswers((s) => ({ ...s, [k]: v }));
-  const canNext = !!answers[current.key]; // <-- use guaranteed step
+  const canNext = !!answers[current.key];
 
-  // ---- Scoring logic (same as yours) ----
-  type Rationale = { ssd: string[]; hdd: string[] };
+  // ---- Scoring logic ----
   const compute = (a: Answers) => {
-    let ssd = 0, hdd = 0;
+    let ssd = 0,
+      hdd = 0;
     const why: Rationale = { ssd: [], hdd: [] };
 
-    if (a.budget === 'tight') { hdd += 2; why.hdd.push('Tight budget: best $/GB.'); }
-    if (a.budget === 'moderate') { hdd += 1; why.hdd.push('Moderate budget: favor capacity where it matters.'); }
-    if (a.budget === 'flexible') { ssd += 1; why.ssd.push('Flexible budget: can prioritize speed.'); }
+    // Budget
+    if (a.budget === 'tight') {
+      hdd += 2;
+      why.hdd.push('Tight budget: best $/GB.');
+    } else if (a.budget === 'moderate') {
+      hdd += 1;
+      why.hdd.push('Moderate budget: capacity where it matters.');
+    } else if (a.budget === 'flexible') {
+      ssd += 1;
+      why.ssd.push('Flexible budget: can prioritize speed.');
+    }
 
-    if (a.primaryUse === 'os') { ssd += 2; why.ssd.push('OS & apps: low latency benefits.'); }
-    if (a.primaryUse === 'editing') { ssd += 2; hdd += 1; why.ssd.push('Editing: fast scratch/media cache.'); why.hdd.push('Editing: large project archives.'); }
-    if (a.primaryUse === 'gaming') { ssd += 1; hdd += 1; why.ssd.push('Gaming: quick loads for favorites.'); why.hdd.push('Gaming: space for large libraries.'); }
-    if (a.primaryUse === 'archive') { hdd += 2; why.hdd.push('Archiving/backups: capacity-first.'); }
+    // Primary use
+    if (a.primaryUse === 'os') {
+      ssd += 2;
+      why.ssd.push('OS & apps: low-latency benefit.');
+    } else if (a.primaryUse === 'editing') {
+      ssd += 2;
+      hdd += 1;
+      why.ssd.push('Editing: fast scratch/cache.');
+      why.hdd.push('Editing: large project archives.');
+    } else if (a.primaryUse === 'gaming') {
+      ssd += 1;
+      hdd += 1;
+      why.ssd.push('Gaming: quick loads for favorites.');
+      why.hdd.push('Gaming: space for large libraries.');
+    } else if (a.primaryUse === 'archive') {
+      hdd += 2;
+      why.hdd.push('Archiving/backups: capacity-first.');
+    }
 
-    if (a.capacity === 'sub1TB') { ssd += 1; why.ssd.push('Small footprint fits well on SSD.'); }
-    if (a.capacity === 'oneToFour') { ssd += 1; hdd += 1; why.ssd.push('1–4TB: fast working set.'); why.hdd.push('1–4TB: affordable bulk.'); }
-    if (a.capacity === 'multiTB') { hdd += 2; why.hdd.push('8TB+: HDD dominates cost per TB.'); }
+    // Capacity
+    if (a.capacity === 'sub1TB') {
+      ssd += 1;
+      why.ssd.push('Small footprint fits well on SSD.');
+    } else if (a.capacity === 'oneToFour') {
+      ssd += 1;
+      hdd += 1;
+      why.ssd.push('1–4TB: fast working set.');
+      why.hdd.push('1–4TB: affordable bulk.');
+    } else if (a.capacity === 'multiTB') {
+      hdd += 2;
+      why.hdd.push('8TB+: HDD dominates cost per TB.');
+    }
 
-    if (a.portability === 'mobile') { ssd += 1; why.ssd.push('Mobile: shock-resistant, lower power.'); }
-    if (a.portability === 'stationary') { hdd += 1; why.hdd.push('Stationary: mechanics are a non-issue.'); }
+    // Portability
+    if (a.portability === 'mobile') {
+      ssd += 1;
+      why.ssd.push('Mobile: shock-resistant, lower power.');
+    } else if (a.portability === 'stationary') {
+      hdd += 1;
+      why.hdd.push('Stationary: mechanics are a non-issue.');
+    }
 
     let title: 'SSD' | 'HDD' | 'Hybrid (SSD + HDD)';
     if (ssd >= hdd + 2) title = 'SSD';
@@ -208,7 +292,7 @@ function WhichDriveQuiz() {
     else title = 'Hybrid (SSD + HDD)';
 
     const total = ssd + hdd || 1;
-    const confidence = Math.round(Math.abs(ssd - hdd) / total * 100);
+    const confidence = Math.round((Math.abs(ssd - hdd) / total) * 100);
 
     const split = (() => {
       if (title === 'SSD') {
@@ -217,10 +301,11 @@ function WhichDriveQuiz() {
         return 'SSD 2TB+ (consider secondary HDD for overflow)';
       }
       if (title === 'HDD') {
-        if (a.capacity === 'sub1TB') return 'HDD 1TB (or 2TB for headroom)';
+        if (a.capacity === 'sub1TB') return 'HDD 1–2TB';
         if (a.capacity === 'oneToFour') return 'HDD 2–4TB';
         return 'HDD 8–16TB+';
       }
+      // Hybrid
       if (a.capacity === 'sub1TB') return 'SSD 500GB + HDD 1TB';
       if (a.capacity === 'oneToFour') return 'SSD 1TB + HDD 2–4TB';
       return 'SSD 1TB + HDD 8–16TB+';
@@ -247,17 +332,18 @@ function WhichDriveQuiz() {
     return allAnswered ? compute(answers) : null;
   }, [answers]); // steps is constant
 
-  // ---- UI atoms ----
+  // ---- UI bits ----
   const pill = (active: boolean) =>
-    active ? 'bg-slate-900 text-white border-slate-900'
-           : 'bg-white text-slate-900 border-slate-300 hover:bg-slate-50';
+    active ? 'bg-slate-900 text-white border-slate-900' : 'bg-white text-slate-900 border-slate-300 hover:bg-slate-50';
 
   const Progress = () => {
-    const pct = ((clamp(step, 0, steps.length - 1) + 1) / steps.length) * 100;
+    const pct = ((idx + 1) / steps.length) * 100;
     return (
       <div className="mb-5">
         <div className="flex justify-between text-xs text-slate-600 mb-1">
-          <span>Step {clamp(step,0,steps.length-1) + 1} of {steps.length}</span>
+          <span>
+            Step {idx + 1} of {steps.length}
+          </span>
           <span>{Math.round(pct)}%</span>
         </div>
         <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden">
@@ -267,22 +353,18 @@ function WhichDriveQuiz() {
     );
   };
 
-  const StepCard = ({ s }: { s: (typeof steps)[number] }) => (
+  const StepCard = ({ s }: { s: Step }) => (
     <div className="rounded-2xl border border-slate-300 p-5">
       <div className="flex items-center gap-2">
         <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-100 text-slate-800 border border-slate-300">
-          Question {clamp(step,0,steps.length-1) + 1}
+          Question {idx + 1}
         </span>
         <h3 className="text-lg font-semibold">{s.label}</h3>
       </div>
       {s.help && <p className="text-slate-700 mt-2">{s.help}</p>}
       <div className="mt-4 flex flex-wrap gap-2">
         {s.options.map(([v, l]) => (
-          <button
-            key={v}
-            onClick={() => set(s.key, v)}
-            className={`px-3 py-1.5 rounded-full border ${pill(answers[s.key] === v)}`}
-          >
+          <button key={v} onClick={() => set(s.key, v)} className={`px-3 py-1.5 rounded-full border ${pill(answers[s.key] === v)}`}>
             {l}
           </button>
         ))}
@@ -295,19 +377,40 @@ function WhichDriveQuiz() {
       <div className="p-4 rounded-xl bg-slate-50 border border-slate-300">
         <div className="text-xs uppercase tracking-wide text-slate-600">Why SSD?</div>
         <ul className="mt-2 space-y-1 text-sm text-slate-800">
-          {why.ssd.length ? why.ssd.map((t, i) => <li key={`s${i}`} className="flex gap-2"><span>•</span><span>{t}</span></li>) : <li className="text-slate-500">No SSD-leaning factors selected.</li>}
+          {why.ssd.length ? (
+            why.ssd.map((t, i) => (
+              <li key={`s${i}`} className="flex gap-2">
+                <span>•</span>
+                <span>{t}</span>
+              </li>
+            ))
+          ) : (
+            <li className="text-slate-500">No SSD-leaning factors selected.</li>
+          )}
         </ul>
       </div>
       <div className="p-4 rounded-xl bg-slate-50 border border-slate-300">
         <div className="text-xs uppercase tracking-wide text-slate-600">Why HDD?</div>
         <ul className="mt-2 space-y-1 text-sm text-slate-800">
-          {why.hdd.length ? why.hdd.map((t, i) => <li key={`h${i}`} className="flex gap-2"><span>•</span><span>{t}</span></li>) : <li className="text-slate-500">No HDD-leaning factors selected.</li>}
+          {why.hdd.length ? (
+            why.hdd.map((t, i) => (
+              <li key={`h${i}`} className="flex gap-2">
+                <span>•</span>
+                <span>{t}</span>
+              </li>
+            ))
+          ) : (
+            <li className="text-slate-500">No HDD-leaning factors selected.</li>
+          )}
         </ul>
       </div>
     </div>
   );
 
-  const reset = () => { setAnswers({}); setStep(0); };
+  const reset = () => {
+    setAnswers({});
+    setStep(0);
+  };
 
   // ---- Render ----
   return (
@@ -321,8 +424,6 @@ function WhichDriveQuiz() {
       </p>
 
       <Progress />
-
-      {/* use guaranteed "current" so it's never undefined */}
       <StepCard s={current} />
 
       <div className="mt-4 flex items-center justify-between">
@@ -336,17 +437,15 @@ function WhichDriveQuiz() {
         {step < steps.length - 1 ? (
           <button
             onClick={() => canNext && setStep((s) => clamp(s + 1, 0, steps.length - 1))}
-            className={`px-3 py-1.5 rounded-lg ${canNext ? 'bg-slate-900 text-white hover:bg-slate-800' : 'bg-slate-200 text-slate-500 cursor-not-allowed'}`}
+            className={`px-3 py-1.5 rounded-lg ${
+              canNext ? 'bg-slate-900 text-white hover:bg-slate-800' : 'bg-slate-200 text-slate-500 cursor-not-allowed'
+            }`}
             aria-disabled={!canNext}
           >
             Next
           </button>
         ) : (
-          <button
-            onClick={() => null}
-            className="px-3 py-1.5 rounded-lg bg-slate-900 text-white"
-            aria-disabled={!result}
-          >
+          <button className="px-3 py-1.5 rounded-lg bg-slate-900 text-white" aria-disabled={!result}>
             See result
           </button>
         )}
@@ -366,17 +465,31 @@ function WhichDriveQuiz() {
           <div className="text-slate-800 mt-2">{result.summary}</div>
           <RationaleList why={result.why} />
           <div className="flex flex-wrap gap-2 mt-4">
-            <a href="#use-hybrid" className="inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white">Learn about hybrid</a>
-            <a href="#use-gaming" className="inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white">Gaming tips</a>
-            <a href="#use-creators" className="inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white">Creator workflow</a>
-            <a href="#use-nas" className="inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white">NAS planning</a>
-            <button onClick={reset} className="ml-auto inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white">Reset</button>
+            <a href="#use-hybrid" className="inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white">
+              Learn about hybrid
+            </a>
+            <a href="#use-gaming" className="inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white">
+              Gaming tips
+            </a>
+            <a href="#use-creators" className="inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white">
+              Creator workflow
+            </a>
+            <a href="#use-nas" className="inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white">
+              NAS planning
+            </a>
+            <button
+              onClick={reset}
+              className="ml-auto inline-flex px-3 py-1.5 rounded-lg border border-slate-300 text-slate-900 hover:bg-white"
+            >
+              Reset
+            </button>
           </div>
         </div>
       )}
     </section>
   );
 }
+
 
 
 
