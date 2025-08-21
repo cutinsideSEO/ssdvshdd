@@ -160,9 +160,6 @@ function TinyCapacityCalculator() {
   );
 }
 
-
-Here’s a drop-in, TypeScript-safe replacement for your `WhichDriveQuiz` component (self-contained and fixes the `current`/`StepCard` typing issues):
-
 function WhichDriveQuiz() {
   // ---- Types ----
   type Answers = { budget?: string; primaryUse?: string; capacity?: string; portability?: string };
