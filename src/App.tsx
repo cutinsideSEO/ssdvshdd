@@ -315,7 +315,7 @@ export default function HDDvsSSDPage() {
       <section id="capacity-cost" className="relative isolate">
         <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="text-3xl font-semibold">Capacity & Cost‑Per‑Gigabyte</h2>
+            <h2 className="text-3xl font-semibold">Capacity & Cost‑Per‑Gigabyte in HDD vs. SSD</h2>
             <p className="mt-2 text-slate-800">For mass storage at 4TB, 8TB, 16TB and beyond, HDDs offer outstanding value per gigabyte. SSDs deliver speed, but cost scales faster at high capacities.</p>
             <ul className="mt-3 grid gap-2 text-slate-800">
               <Bullet><span className="font-semibold">Cost curve:</span>&nbsp;SSD $/GB rises sharply above 4TB; HDD remains economical up to 20TB+.</Bullet>
@@ -333,7 +333,7 @@ export default function HDDvsSSDPage() {
       <section id="reliability" className="relative isolate bg-slate-50">
         <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold">Lifespan & Reliability</h2>
+            <h2 className="text-3xl font-semibold">How long do HDDs last vs. SSDs</h2>
             <ul className="grid gap-2 text-slate-800">
               <Bullet><span className="font-semibold">HDD:</span>&nbsp;Mature tech with predictable failure modes (MTBF). Often shows early warnings (SMART, bad sectors).</Bullet>
               <Bullet><span className="font-semibold">SSD:</span>&nbsp;Finite write endurance (TBW). Controller/firmware faults may be abrupt and unrecoverable.</Bullet>
@@ -349,7 +349,7 @@ export default function HDDvsSSDPage() {
         <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-center">
           <ImageFrame src={imgs.blue} alt="Data recovery pathways"/>
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold">Data Recovery</h2>
+            <h2 className="text-3xl font-semibold">Data Recovery in SSD vs. HDD</h2>
             <ul className="grid gap-2 text-slate-800">
               <Bullet><span className="font-semibold">HDD:</span>&nbsp;Multiple professional recovery paths (head swap, platter transplant, firmware service).</Bullet>
               <Bullet><span className="font-semibold">SSD:</span>&nbsp;Controller failures and wear‑leveling can complicate or prevent recovery.</Bullet>
@@ -363,7 +363,7 @@ export default function HDDvsSSDPage() {
       <section id="durability" className="relative isolate bg-slate-50">
         <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-4">
-            <h2 className="text-3xl font-semibold">Durability & Shock</h2>
+            <h2 className="text-3xl font-semibold">How Durable Is an SSD vs. an HDD?</h2>
             <ul className="grid gap-2 text-slate-800">
               <Bullet><span className="font-semibold">SSD:</span>&nbsp;No moving parts, strong shock resistance—ideal for laptops and mobile workflows.</Bullet>
               <Bullet><span className="font-semibold">HDD:</span>&nbsp;For stationary desktops/NAS, mechanical nature is a non‑issue; value & capacity dominate.</Bullet>
@@ -400,51 +400,6 @@ export default function HDDvsSSDPage() {
           <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-600 mt-2" />Use an internal NVMe/SATA <span className="font-medium">SSD</span> for Windows/macOS, creative apps, and everyday tasks.</li>
           <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-600 mt-2" />Add a <span className="font-medium">USB-C portable HDD</span> for photos, videos, game libraries, and Time Machine/File History backups.</li>
           <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-600 mt-2" />Traveling? Keep the smallest “working set” on SSD; park the bulk library on the HDD at home or carry a rugged portable drive.</li>
-        </ul>
-      </div>
-
-      {/* Mini comparison specific to laptops */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h3 className="text-lg font-semibold">Laptop use: SSD vs HDD at a glance</h3>
-        <div className="mt-3 overflow-x-auto">
-          <table className="min-w-full text-left text-sm">
-            <thead className="bg-slate-100 text-slate-800">
-              <tr><th className="p-3">Factor</th><th className="p-3">Internal SSD</th><th className="p-3">Portable HDD</th></tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              <tr>
-                <td className="p-3">Boot & app load</td>
-                <td className="p-3">Instant; best for daily responsiveness</td>
-                <td className="p-3">Not applicable (external)</td>
-              </tr>
-              <tr>
-                <td className="p-3">$ per TB</td>
-                <td className="p-3">Higher</td>
-                <td className="p-3">Lower (great for big libraries)</td>
-              </tr>
-              <tr>
-                <td className="p-3">Power & noise</td>
-                <td className="p-3">Low power, silent</td>
-                <td className="p-3">Low power, faint hum when active</td>
-              </tr>
-              <tr>
-                <td className="p-3">Best for</td>
-                <td className="p-3">OS, apps, scratch files</td>
-                <td className="p-3">Photos/videos, game installs, backups</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Practical tips */}
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <h3 className="text-lg font-semibold">Practical tips</h3>
-        <ul className="mt-3 grid gap-2 text-slate-800">
-          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-600 mt-2" />If your laptop allows upgrades, moving from HDD → SSD is the single biggest speed boost.</li>
-          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-600 mt-2" />Prefer <span className="font-medium">USB-C</span> enclosures/cables; they’re sturdier and faster than older USB-A.</li>
-          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-600 mt-2" />Use your OS backup tool (Time Machine / File History) to automate HDD backups.</li>
-          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-600 mt-2" />Keep the drive in a padded sleeve when traveling; avoid unplugging during transfers.</li>
         </ul>
       </div>
 
@@ -671,21 +626,183 @@ export default function HDDvsSSDPage() {
 </section>
 
 
-      {/* Capacity infographic */}
-      <section id="capacity-infographic" className="relative isolate bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-semibold">How Much Can You Store on HDDs</h2>
-          <div className="mt-6 p-8 rounded-3xl border border-slate-200 bg-white shadow-sm">
-            <p className="text-slate-800">What does an 18TB drive hold?</p>
-            <div className="mt-5 grid md:grid-cols-3 gap-6 text-slate-900">
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center"><span className="text-3xl font-bold">4,500+</span><div className="mt-1 text-sm text-slate-700">hours of HD video</div></div>
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center"><span className="text-3xl font-bold">3.6M+</span><div className="mt-1 text-sm text-slate-700">photos (at 5MB each)</div></div>
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center"><span className="text-3xl font-bold">~12,000</span><div className="mt-1 text-sm text-slate-700">indie games (~1.5GB each)</div></div>
+  {/* Capacity infographic */}
+<section id="capacity-infographic" className="relative isolate bg-slate-50">
+  <div className="max-w-6xl mx-auto px-6 py-20">
+    <h2 className="text-3xl font-semibold text-slate-900">How Much Can You Store on HDDs</h2>
+
+    {/* Quick lower-capacity picks */}
+    <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="text-xs uppercase tracking-wide text-slate-600">Lower capacity tip</div>
+        <div className="mt-1 text-lg font-semibold text-slate-900">1TB — Everyday baseline</div>
+        <ul className="mt-3 text-sm text-slate-800 space-y-2">
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-400 mt-2"></span> ~250 hours HD video • ~40 hours 4K video</li>
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-400 mt-2"></span> ~200,000 photos (5MB each) or ~200,000 songs</li>
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-400 mt-2"></span> ~660 indie games (~1.5GB) or ~20 AAA games (~50GB)</li>
+        </ul>
+        <div className="mt-4 text-xs text-slate-600">Good for students, light media, and a primary PC backup.</div>
+      </div>
+
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="text-xs uppercase tracking-wide text-slate-600">Lower capacity tip</div>
+        <div className="mt-1 text-lg font-semibold text-slate-900">2TB — Room to grow</div>
+        <ul className="mt-3 text-sm text-slate-800 space-y-2">
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-400 mt-2"></span> ~500 hours HD video • ~80 hours 4K video</li>
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-400 mt-2"></span> ~400,000 photos (5MB each) or ~400,000 songs</li>
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-slate-400 mt-2"></span> ~1,300 indie games (~1.5GB) or ~40 AAA games (~50GB)</li>
+        </ul>
+        <div className="mt-4 text-xs text-slate-600">Nice balance for families, creators starting out, and console libraries.</div>
+      </div>
+    </div>
+
+    {/* Visual capacity cards */}
+    <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {/* 4TB */}
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex items-baseline justify-between">
+          <div className="text-2xl font-bold text-slate-900">4TB</div>
+          <span className="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">Great value</span>
+        </div>
+        <div className="mt-4 space-y-3 text-sm text-slate-800">
+          <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+            <div className="text-xl font-semibold text-slate-900">~1,000</div>
+            <div className="text-slate-700">hours of HD video</div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~160</div>
+              <div className="text-slate-700 text-xs">hours 4K video</div>
             </div>
-            <div className="text-xs text-slate-600 mt-3">Illustrative only; sizes vary by title, codec, resolution, and format.</div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~800k</div>
+              <div className="text-slate-700 text-xs">photos / songs</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~2,600</div>
+              <div className="text-slate-700 text-xs">indie games (~1.5GB)</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~80</div>
+              <div className="text-slate-700 text-xs">AAA games (~50GB)</div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* 8TB */}
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex items-baseline justify-between">
+          <div className="text-2xl font-bold text-slate-900">8TB</div>
+          <span className="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">Media libraries</span>
+        </div>
+        <div className="mt-4 space-y-3 text-sm text-slate-800">
+          <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+            <div className="text-xl font-semibold text-slate-900">~2,000</div>
+            <div className="text-slate-700">hours of HD video</div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~320</div>
+              <div className="text-slate-700 text-xs">hours 4K video</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~1.6M</div>
+              <div className="text-slate-700 text-xs">photos / songs</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~5,300</div>
+              <div className="text-slate-700 text-xs">indie games (~1.5GB)</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~160</div>
+              <div className="text-slate-700 text-xs">AAA games (~50GB)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 12TB */}
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex items-baseline justify-between">
+          <div className="text-2xl font-bold text-slate-900">12TB</div>
+          <span className="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">Backups & NAS</span>
+        </div>
+        <div className="mt-4 space-y-3 text-sm text-slate-800">
+          <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+            <div className="text-xl font-semibold text-slate-900">~3,000</div>
+            <div className="text-slate-700">hours of HD video</div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~480</div>
+              <div className="text-slate-700 text-xs">hours 4K video</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~2.4M</div>
+              <div className="text-slate-700 text-xs">photos / songs</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~8,000</div>
+              <div className="text-slate-700 text-xs">indie games (~1.5GB)</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~240</div>
+              <div className="text-slate-700 text-xs">AAA games (~50GB)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 18TB (anchor example kept from your page) */}
+      <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="flex items-baseline justify-between">
+          <div className="text-2xl font-bold text-slate-900">18TB</div>
+          <span className="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700 border border-slate-200">Scale & archives</span>
+        </div>
+        <div className="mt-4 space-y-3 text-sm text-slate-800">
+          <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+            <div className="text-xl font-semibold text-slate-900">~4,500+</div>
+            <div className="text-slate-700">hours of HD video</div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~720</div>
+              <div className="text-slate-700 text-xs">hours 4K video</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~3.6M</div>
+              <div className="text-slate-700 text-xs">photos / songs</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~12,000</div>
+              <div className="text-slate-700 text-xs">indie games (~1.5GB)</div>
+            </div>
+            <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 text-center">
+              <div className="text-lg font-semibold text-slate-900">~360</div>
+              <div className="text-slate-700 text-xs">AAA games (~50GB)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Footnotes */}
+    <div className="mt-6 text-xs text-slate-600 leading-relaxed">
+      Estimates assume decimal capacities (1TB ≈ 1,000GB). HD video ≈ 4GB/hour; 4K video ≈ 25GB/hour; photo/song ≈ 5MB; document ≈ 1MB; indie game ≈ 1.5GB; AAA game ≈ 50GB.
+      Actual results vary by codec, bitrate, format, title, and file size.
+    </div>
+  </div>
+</section>
+
 
       {/* Conclusion */}
       <section id="conclusion" className="relative isolate">
