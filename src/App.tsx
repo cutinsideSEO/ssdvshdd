@@ -21,7 +21,7 @@ function useSmoke() {
     const must = [
       '#intro', '#glance', '#why', '#defs', '#comparison', '#capacity-cost', '#reliability', '#data-recovery', '#durability', '#quiz', '#laptop', '#pros-cons', '#use-cases', '#use-gaming', '#use-creators', '#use-families', '#use-nas', '#use-hybrid', '#brand', '#capacity-infographic', '#conclusion', '#faqs', '#references', '#learn-more'
     ];
-    must.forEach((sel) => console.assert(!!document.querySelector(sel), `Section ${sel} should exist`);
+    must.forEach((sel) => console.assert(!!document.querySelector(sel), `Section ${sel} should exist`));
     const ctas = document.querySelectorAll('#use-cases a');
     console.assert(ctas.length >= 4, 'CTAs present for each use case');
     console.log('%cSmoke: sections & CTAs mounted', 'color:#16a34a');
