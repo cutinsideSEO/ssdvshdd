@@ -135,7 +135,7 @@ export default function HDDvsSSDPage() {
   useSmoke();
 
   const imgs = {
-    blue: 'https://www.westerndigital.com/content/dam/store/en-us/assets/products/internal-storage/wd-blue-desktop-sata-hdd/gallery/wd-blue-pc-desktop-hard-drive-1tb.png.thumb.1280.1280.png',
+    blue: 'https://www.westerndigital.com/content/dam/store/en-us/assets/solutions/ssd-vs-hdd/ssd-vs-hdd-ssd-hdd.png.wdthumb.1280.1280.webp',
     black: 'https://www.westerndigital.com/content/dam/store/en-us/assets/products/internal-storage/wd-black-desktop-sata-hdd/gallery/wd-black-desktop-4tb.png.thumb.1280.1280.png',
     red: 'https://www.westerndigital.com/content/dam/store/en-us/assets/products/internal-storage/wd-red-plus-sata-3-5-hdd/gallery/wd-red-plus-sata-3-5-hdd-2tb.png.thumb.1280.1280.png',
     gold: 'https://www.westerndigital.com/content/dam/store/en-us/assets/products/internal-storage/wd-gold-sata-hdd/gallery/WD-GOLD-1TB.png.thumb.1280.1280.png'
