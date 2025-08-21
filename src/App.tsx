@@ -247,66 +247,26 @@ export default function HDDvsSSDPage() {
         </div>
       </section>
 
-{/* What is HDD / SSD — enriched copy, clearer structure, more visuals */}
+{/* What is HDD / SSD — simplified but more detailed on how they work */}
 <section id="defs" className="relative isolate">
   {/* HDD */}
   <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-start">
     <div className="space-y-5">
       <h2 className="text-3xl font-semibold">What is an HDD (Hard Disk Drive)?</h2>
       <p className="text-slate-800 leading-relaxed">
-        A hard disk drive stores data magnetically on spinning platters. An actuator arm moves a tiny head across the surface to read and write bits. 
-        HDDs have been refined for decades, earning a reputation as the <span className="font-semibold">proven workhorse</span> for massive, affordable capacity.
+        An HDD stores data magnetically on spinning disks called <span className="font-medium">platters</span>. 
+        A mechanical arm with a read/write head moves across the surface to locate and modify data. 
+        The faster the disks spin (measured in RPM), the quicker the drive can access information.
       </p>
-
-      <div className="grid sm:grid-cols-2 gap-5">
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div className="text-sm font-semibold text-slate-900">How it works</div>
-          <ul className="mt-3 grid gap-2 text-slate-800">
-            <Bullet>Platters spin at a fixed RPM (e.g., 5400/7200).</Bullet>
-            <Bullet>Heads seek to track and sector to read/write data.</Bullet>
-            <Bullet>Firmware manages caching, error correction & power-down.</Bullet>
-          </ul>
-        </div>
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div className="text-sm font-semibold text-slate-900">Where HDDs shine</div>
-          <ul className="mt-3 grid gap-2 text-slate-800">
-            <Bullet>Highest <span className="font-medium">$ per GB</span> value at multi-TB.</Bullet>
-            <Bullet>Excellent for large media libraries & backups.</Bullet>
-            <Bullet>Mature ecosystem for diagnostics & data recovery.</Bullet>
-          </ul>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <div className="text-sm font-semibold text-slate-900">Ideal uses</div>
-        <div className="mt-3 grid md:grid-cols-2 gap-3 text-slate-800">
-          <ul className="grid gap-2">
-            <Bullet>Bulk photo & video archives</Bullet>
-            <Bullet>Game libraries you don’t launch daily</Bullet>
-            <Bullet>NAS, home servers, surveillance footage</Bullet>
-          </ul>
-          <ul className="grid gap-2">
-            <Bullet>Time-machine / image-based backups</Bullet>
-            <Bullet>Cold storage & long-term retention</Bullet>
-            <Bullet>Media streaming and sequential reads</Bullet>
-          </ul>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <div className="text-sm font-semibold text-slate-900">Things to keep in mind</div>
-        <ul className="mt-3 grid gap-2 text-slate-800">
-          <Bullet>Slower random access vs SSD; best for sequential workloads.</Bullet>
-          <Bullet>Mechanical device: avoid shocks while powered.</Bullet>
-          <Bullet>Use SMART monitoring; plan regular backups (3-2-1 rule).</Bullet>
-        </ul>
-      </div>
+      <p className="text-slate-800 leading-relaxed">
+        Data is written in tracks and sectors on each platter, while onboard firmware manages positioning, caching, and error correction. 
+        Because it relies on moving parts, an HDD makes a characteristic whirring sound when active.
+      </p>
     </div>
-
     <ImageFrame
       src={imgs.gold}
       alt="WD Gold HDD product image"
-      caption="HDD: the workhorse for massive, affordable capacity"
+      caption="Inside an HDD: spinning platters and moving heads"
     />
   </div>
 
@@ -315,58 +275,18 @@ export default function HDDvsSSDPage() {
     <ImageFrame
       src={"https://www.westerndigital.com/content/dam/store/en-us/assets/solutions/ssd-vs-hdd/ssd-vs-hdd-g-speed-shuttle.png.wdthumb.1280.1280.webp"}
       alt="High-performance solid state storage enclosure"
-      caption="SSD: silent, low-latency flash storage optimized for speed"
+      caption="Inside an SSD: rows of NAND flash chips"
     />
     <div className="space-y-5">
       <h2 className="text-3xl font-semibold">What is an SSD (Solid State Drive)?</h2>
       <p className="text-slate-800 leading-relaxed">
-        A solid state drive stores data in flash memory chips and has <span className="font-semibold">no moving parts</span>. 
-        That design delivers very low latency and fast throughput—great for the operating system, applications, and active projects where responsiveness matters.
+        An SSD stores data on interconnected <span className="font-medium">NAND flash memory chips</span>. 
+        Unlike HDDs, there are no moving parts—information is accessed electronically, similar to how RAM works, but in a non-volatile form that retains data even without power.
       </p>
-
-      <div className="grid sm:grid-cols-2 gap-5">
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div className="text-sm font-semibold text-slate-900">How it works</div>
-          <ul className="mt-3 grid gap-2 text-slate-800">
-            <Bullet>Controller orchestrates reads/writes across NAND flash.</Bullet>
-            <Bullet>Wear-leveling extends life; DRAM/host caching improves speed.</Bullet>
-            <Bullet>Interfaces include SATA and NVMe (PCIe) for higher bandwidth.</Bullet>
-          </ul>
-        </div>
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div className="text-sm font-semibold text-slate-900">Where SSDs shine</div>
-          <ul className="mt-3 grid gap-2 text-slate-800">
-            <Bullet>Instant boots, app launches, and project loads.</Bullet>
-            <Bullet>Silent operation; low power and heat.</Bullet>
-            <Bullet>Excellent random I/O & multitasking responsiveness.</Bullet>
-          </ul>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <div className="text-sm font-semibold text-slate-900">Ideal uses</div>
-        <div className="mt-3 grid md:grid-cols-2 gap-3 text-slate-800">
-          <ul className="grid gap-2">
-            <Bullet>Operating system & key applications</Bullet>
-            <Bullet>Active photo/video editing scratch</Bullet>
-            <Bullet>Frequent-play titles & competitive gaming</Bullet>
-          </ul>
-          <ul className="grid gap-2">
-            <Bullet>Virtual machines & development toolchains</Bullet>
-            <Bullet>Catalogs, previews, and project assets</Bullet>
-            <Bullet>Database indexes / metadata-heavy tasks</Bullet>
-          </ul>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-        <div className="text-sm font-semibold text-slate-900">Things to keep in mind</div>
-        <ul className="mt-3 grid gap-2 text-slate-800">
-          <Bullet>Higher cost per GB—large capacities are pricier than HDD.</Bullet>
-          <Bullet>Finite write endurance (TBW); monitor health where supported.</Bullet>
-          <Bullet>Controller failure can be abrupt—backups remain essential.</Bullet>
-        </ul>
-      </div>
+      <p className="text-slate-800 leading-relaxed">
+        A controller manages how data is distributed across memory cells, ensuring speed and durability through techniques like wear-leveling and error correction. 
+        This design makes SSDs nearly silent, shock-resistant, and able to access data in microseconds.
+      </p>
     </div>
   </div>
 </section>
@@ -461,18 +381,99 @@ export default function HDDvsSSDPage() {
         </div>
       </section>
 
-      {/* Laptop */}
-      <section id="laptop" className="relative isolate bg-slate-50">
-        <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-semibold">Laptop HDD vs SSD</h2>
-            <h3 className="text-xl font-semibold">Which is better for laptops?</h3>
-            <p className="text-slate-800">Most laptops use internal SSDs for responsiveness—but often with limited capacity. Pair with a high‑capacity, portable external HDD to store large libraries and backups.</p>
-            <a href="https://www.westerndigital.com/solutions/home-backup-solutions" className="inline-block mt-1"><span className="px-4 py-2 rounded-2xl bg-emerald-700 text-white hover:bg-emerald-800 transition">Never Run Out of Space. Explore Portable HDDs.</span></a>
-          </div>
-          <ImageFrame src={imgs.blue} alt="External HDD with laptop"/>
+     {/* Laptop — richer, guide-style */}
+<section id="laptop" className="relative isolate bg-slate-50">
+  <div className="max-w-6xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12 items-center">
+    <div className="space-y-5">
+      <h2 className="text-3xl font-semibold">Laptop HDD vs SSD</h2>
+      <p className="text-slate-800">
+        Laptops prioritize responsiveness, battery life, and portability. That’s why most ship with an internal
+        <span className="font-medium"> SSD</span>. The trade-off is capacity: multi-terabyte SSDs get expensive fast.
+        A practical setup is <span className="font-medium">SSD inside</span> for the OS and apps, plus a
+        <span className="font-medium"> portable HDD</span> for libraries and backups.
+      </p>
+
+      {/* Quick guidance */}
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h3 className="text-lg font-semibold">Quick guidance</h3>
+        <ul className="mt-3 grid gap-2 text-slate-800">
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-600 mt-2" />Use an internal NVMe/SATA <span className="font-medium">SSD</span> for Windows/macOS, creative apps, and everyday tasks.</li>
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-600 mt-2" />Add a <span className="font-medium">USB-C portable HDD</span> for photos, videos, game libraries, and Time Machine/File History backups.</li>
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-600 mt-2" />Traveling? Keep the smallest “working set” on SSD; park the bulk library on the HDD at home or carry a rugged portable drive.</li>
+        </ul>
+      </div>
+
+      {/* Mini comparison specific to laptops */}
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h3 className="text-lg font-semibold">Laptop use: SSD vs HDD at a glance</h3>
+        <div className="mt-3 overflow-x-auto">
+          <table className="min-w-full text-left text-sm">
+            <thead className="bg-slate-100 text-slate-800">
+              <tr><th className="p-3">Factor</th><th className="p-3">Internal SSD</th><th className="p-3">Portable HDD</th></tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100">
+              <tr>
+                <td className="p-3">Boot & app load</td>
+                <td className="p-3">Instant; best for daily responsiveness</td>
+                <td className="p-3">Not applicable (external)</td>
+              </tr>
+              <tr>
+                <td className="p-3">$ per TB</td>
+                <td className="p-3">Higher</td>
+                <td className="p-3">Lower (great for big libraries)</td>
+              </tr>
+              <tr>
+                <td className="p-3">Power & noise</td>
+                <td className="p-3">Low power, silent</td>
+                <td className="p-3">Low power, faint hum when active</td>
+              </tr>
+              <tr>
+                <td className="p-3">Best for</td>
+                <td className="p-3">OS, apps, scratch files</td>
+                <td className="p-3">Photos/videos, game installs, backups</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </section>
+      </div>
+
+      {/* Practical tips */}
+      <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <h3 className="text-lg font-semibold">Practical tips</h3>
+        <ul className="mt-3 grid gap-2 text-slate-800">
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-600 mt-2" />If your laptop allows upgrades, moving from HDD → SSD is the single biggest speed boost.</li>
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-600 mt-2" />Prefer <span className="font-medium">USB-C</span> enclosures/cables; they’re sturdier and faster than older USB-A.</li>
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-600 mt-2" />Use your OS backup tool (Time Machine / File History) to automate HDD backups.</li>
+          <li className="flex gap-2"><span className="inline-block w-1.5 h-1.5 rounded-full bg-sky-600 mt-2" />Keep the drive in a padded sleeve when traveling; avoid unplugging during transfers.</li>
+        </ul>
+      </div>
+
+      {/* CTAs */}
+      <div className="flex flex-wrap gap-3">
+        <a
+          href="https://www.westerndigital.com/solutions/home-backup-solutions"
+          className="inline-flex px-4 py-2 rounded-2xl bg-slate-900 text-white hover:bg-slate-800 transition"
+        >
+          Never Run Out of Space — Portable HDDs
+        </a>
+        <a
+          href="https://www.westerndigital.com/solutions/thunderbolt-vs-usb-c"
+          className="inline-flex px-4 py-2 rounded-2xl border border-slate-300 text-slate-900 hover:bg-white"
+        >
+          USB-C vs Thunderbolt: Which do I need?
+        </a>
+      </div>
+    </div>
+
+    {/* Illustration */}
+    <ImageFrame
+      src={imgs.blue}
+      alt="Laptop workflow: internal SSD for speed, portable HDD for capacity"
+      caption="Keep the OS and active files on SSD; park libraries and backups on a portable HDD."
+    />
+  </div>
+</section>
+
 
       {/* Pros & Cons */}
       <section id="pros-cons" className="relative isolate">
@@ -520,7 +521,7 @@ export default function HDDvsSSDPage() {
                   <Bullet><span className="font-semibold">Hybrid tip:</span>&nbsp;Move games between drives using the launcher to avoid re‑downloads.</Bullet>
                 </ul>
                 <div className="mt-4 flex gap-3">
-                  <a href="https://www.westerndigital.com/solutions/gaming" className="inline-flex px-4 py-2 rounded-xl border border-slate-300 text-slate-900 hover:bg-white">Gaming setup guidance</a>
+                  <a href="https://www.westerndigital.com/solutions/gaming" className="inline-flex px-4 py-2 rounded-xl border border-slate-300 text-slate-900 hover:bg-white">Gaming HDDs</a>
                 </div>
               </div>
               <ImageFrame src={imgs.black} alt="Gaming setup with SSD + HDD" caption="SSD for the games you launch daily; HDD for the whole library"/>
@@ -558,7 +559,7 @@ export default function HDDvsSSDPage() {
                   <Bullet><span className="font-semibold">Backup rule:</span>&nbsp;Follow 3‑2‑1—3 copies, 2 media, 1 off‑site.</Bullet>
                 </ul>
                 <div className="mt-4 flex gap-3">
-                  <a href="https://www.westerndigital.com/solutions/home-backup-solutions" className="inline-flex px-4 py-2 rounded-xl border border-slate-300 text-slate-900 hover:bg-white">Home backup how‑to</a>
+                  <a href="https://www.westerndigital.com/solutions/home-backup-solutions" className="inline-flex px-4 py-2 rounded-xl border border-slate-300 text-slate-900 hover:bg-white">Home backup HDD</a>
                 </div>
               </div>
               <ImageFrame src={imgs.blue} alt="Family backup workflow" caption="Simple, roomy backups the whole household can rely on"/>
@@ -578,7 +579,7 @@ export default function HDDvsSSDPage() {
                   <Bullet><span className="font-semibold">Practice:</span>&nbsp;Plan RAID + backups; test restore regularly.</Bullet>
                 </ul>
                 <div className="mt-4 flex gap-3">
-                  <a href="https://www.westerndigital.com/solutions/network-attached-storage" className="inline-flex px-4 py-2 rounded-xl border border-slate-300 text-slate-900 hover:bg-white">NAS planning guide</a>
+                  <a href="https://www.westerndigital.com/solutions/network-attached-storage" className="inline-flex px-4 py-2 rounded-xl border border-slate-300 text-slate-900 hover:bg-white">NAS HDDs</a>
                 </div>
               </div>
             </div>
@@ -604,38 +605,71 @@ export default function HDDvsSSDPage() {
         </div>
       </section>
 
-      {/* Brand trust with monochrome icons */}
-      <section id="brand" className="relative isolate">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-semibold text-center">Why Trust Western Digital Hard Drives?</h2>
-          <div className="mt-8 grid md:grid-cols-4 gap-8 text-center">
-            {/* Reliability */}
-            <div className="p-6 rounded-3xl border border-slate-200 bg-white shadow-sm">
-              <svg className="w-10 h-10 mx-auto text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 3l7 4v5c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V7l7-4z"/></svg>
-              <h3 className="mt-3 font-semibold">Reliability</h3>
-              <p className="text-slate-600 text-sm mt-1">Decades of proven performance across consumer and enterprise.</p>
-            </div>
-            {/* Innovation */}
-            <div className="p-6 rounded-3xl border border-slate-200 bg-white shadow-sm">
-              <svg className="w-10 h-10 mx-auto text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 2a7 7 0 017 7c0 2.9-1.9 4.7-3.2 6-.8.8-1.3 1.6-1.6 2.5H9.8c-.3-.9-.8-1.7-1.6-2.5C6.9 13.7 5 11.9 5 9a7 7 0 017-7z"/><path d="M9 22h6"/></svg>
-              <h3 className="mt-3 font-semibold">Innovation</h3>
-              <p className="text-slate-600 text-sm mt-1">Continuous R&D pushes capacity and endurance forward.</p>
-            </div>
-            {/* Global scale */}
-            <div className="p-6 rounded-3xl border border-slate-200 bg-white shadow-sm">
-              <svg className="w-10 h-10 mx-auto text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
-              <h3 className="mt-3 font-semibold">Global Scale</h3>
-              <p className="text-slate-600 text-sm mt-1">Trusted worldwide for personal and business storage.</p>
-            </div>
-            {/* Support */}
-            <div className="p-6 rounded-3xl border border-slate-200 bg-white shadow-sm">
-              <svg className="w-10 h-10 mx-auto text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="10"/><path d="M9 12h.01M15 12h.01M8 16h8"/></svg>
-              <h3 className="mt-3 font-semibold">Support</h3>
-              <p className="text-slate-600 text-sm mt-1">Documentation and service when you need it.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+     {/* Brand trust with monochrome icons */}
+<section id="brand" className="relative isolate bg-slate-50">
+  <div className="max-w-6xl mx-auto px-6 py-20">
+    <h2 className="text-3xl font-semibold text-center text-slate-900">
+      Why Choose Western Digital Hard Drives?
+    </h2>
+
+    <div className="mt-12 grid gap-8 md:grid-cols-4 text-center">
+      {/* Reliability */}
+      <div className="p-6 rounded-3xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
+        <svg className="w-12 h-12 mx-auto text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M12 3l7 4v5c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V7l7-4z"/>
+        </svg>
+        <h3 className="mt-4 text-lg font-semibold">Reliability</h3>
+        <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+          Decades of proven performance, trusted across consumer and enterprise.
+        </p>
+      </div>
+
+      {/* Innovation */}
+      <div className="p-6 rounded-3xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
+        <svg className="w-12 h-12 mx-auto text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M12 2a7 7 0 017 7c0 2.9-1.9 4.7-3.2 6-.8.8-1.3 1.6-1.6 2.5H9.8c-.3-.9-.8-1.7-1.6-2.5C6.9 13.7 5 11.9 5 9a7 7 0 017-7z"/><path d="M9 22h6"/>
+        </svg>
+        <h3 className="mt-4 text-lg font-semibold">Innovation</h3>
+        <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+          Continuous R&D pushing storage capacity, endurance, and speed forward.
+        </p>
+      </div>
+
+      {/* Global scale */}
+      <div className="p-6 rounded-3xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
+        <svg className="w-12 h-12 mx-auto text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/>
+        </svg>
+        <h3 className="mt-4 text-lg font-semibold">Global Scale</h3>
+        <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+          Trusted worldwide, powering personal storage and business infrastructure.
+        </p>
+      </div>
+
+      {/* Support */}
+      <div className="p-6 rounded-3xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
+        <svg className="w-12 h-12 mx-auto text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <circle cx="12" cy="12" r="10"/><path d="M9 12h.01M15 12h.01M8 16h8"/>
+        </svg>
+        <h3 className="mt-4 text-lg font-semibold">Support</h3>
+        <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+          Clear documentation and responsive service whenever you need it.
+        </p>
+      </div>
+    </div>
+
+    {/* Wrap-up CTA */}
+    <div className="mt-12 text-center">
+      <a 
+        href="https://www.westerndigital.com/products/internal-drives" 
+        className="inline-block px-6 py-3 rounded-full bg-emerald-700 text-white font-medium hover:bg-emerald-800 transition"
+      >
+        Explore All WD Hard Drives
+      </a>
+    </div>
+  </div>
+</section>
+
 
       {/* Capacity infographic */}
       <section id="capacity-infographic" className="relative isolate bg-slate-50">
